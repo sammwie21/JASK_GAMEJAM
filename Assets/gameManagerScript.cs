@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class gameManagerScript : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class gameManagerScript : MonoBehaviour
     public int enemiesOnField;
     public float spawnTimer;
     public float spawnRate;
+    public float gameTimer = 45f;
+    public TextMeshProUGUI Timer;
+    public int area = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +22,9 @@ public class gameManagerScript : MonoBehaviour
         spawnRate = 7f;
         enemiesOnField = 0;
         enemyLimit = Random.Range(7,12);
-        for (int i = 0; i <= 4; i++)
+        for (int i = 0; i < 2; i++)
         {
-            portalMaking(Random.Range(-9, 10), Random.Range(-5, 6));
+            portalMaking();
         }
         
     }
@@ -27,37 +32,59 @@ public class gameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnTimer += Time.deltaTime;
+        gameTimer -= Time.deltaTime;
+        Timer.text = gameTimer.ToString("0.00") + " seconds left.";
+        if(gameTimer >= 0)
+        {
+            spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= spawnRate)
-        {
-                enemyLimit = Random.Range(7, 12);
-                for (int i = 0; i <= enemyLimit; i++)
-                {
-                    enemySpawning(Random.Range(-5, 6), Random.Range(-3, 4));
-                }
-            spawnTimer = 0f;
-        }
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            
-            for (int i = 0; i <= 4; i++)
+            if (spawnTimer >= spawnRate)
             {
-                portalMaking(Random.Range(-9, 10), Random.Range(-5, 6));
+                enemyLimit = Random.Range(7, 12);
+                for (int i = 0; i < enemyLimit; i++)
+                {
+                    enemySpawning(Random.Range(0,2), Random.Range(5, 10), Random.Range(-3, 4));
+                }
+                spawnTimer = 0f;
             }
-        }*/
-
+        } else if (gameTimer < 0)
+        {
+            gameTimer = 0;
+            Debug.Log("Game over, you lose");
+        }
 
     }
 
-    public void enemySpawning(int x, int y)
+    public void enemySpawning(int area, int x, int y)
     {
-        Instantiate(enemy, new Vector3(x, y, 0), Quaternion.identity);
-        enemiesOnField += 1;
+        if (area == 0)
+        {
+            Instantiate(enemy, new Vector3(x, y, 0), Quaternion.identity);
+            enemiesOnField += 1;
+        } else if (area >= 1)
+        {
+            Instantiate(enemy, new Vector3(-x, y, 0), Quaternion.identity);
+            enemiesOnField += 1;
+        }
     }
 
-    public void portalMaking(int x, int y)
+    public void portalMaking()
     {
-          Instantiate(portal, new Vector3(x, y, 0), Quaternion.identity);
+        //Random.Range(6, 9), Random.Range(-4, 5)
+        if (area == 0)
+        {
+            Instantiate(portal, new Vector3(Random.Range(6, 9), Random.Range(-4, 5), 0), Quaternion.identity);
+            area += 1;
+        }
+        else if (area == 1)
+        {
+            Instantiate(portal, new Vector3(Random.Range(-6, -9), Random.Range(-4, 5), 0), Quaternion.identity);
+            area += 1;
+        }
+        else if (area == 2)
+        {
+            Instantiate(portal, new Vector3(Random.Range(-1, 2), Random.Range(-5, 6), 0), Quaternion.identity);
+            area += 1;
+        }
     }
 }
