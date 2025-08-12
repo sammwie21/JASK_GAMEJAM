@@ -27,7 +27,18 @@ public class BulletScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            if(player.GetComponent<PlayerScript>().level == 1)
+            { 
+                collision.gameObject.GetComponent<Zombie1Script>().health--;
+            }
+            if (player.GetComponent<PlayerScript>().level == 2)
+            {
+                collision.gameObject.GetComponent<Zombie1Script>().health -= 2;
+            }
+            if (player.GetComponent<PlayerScript>().level == 3)
+            {
+                collision.gameObject.GetComponent<Zombie1Script>().health -= 3;
+            }
             Destroy(gameObject);
         }
     }
