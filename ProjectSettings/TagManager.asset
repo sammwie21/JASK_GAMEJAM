@@ -12,6 +12,9 @@ TagManager:
   - ammo
   - Time
   - XP
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   layers:
   - Default
