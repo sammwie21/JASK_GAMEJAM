@@ -18,11 +18,12 @@ public class gameManagerScript : MonoBehaviour
     public TextMeshProUGUI Ammo;
     public TextMeshProUGUI exp;
     public int area = 0;
+    private List<Transform> portalPositions = new List<Transform>();
     // Start is called before the first frame update
     void Start()
     {
         spawnTimer = 0f;
-        spawnRate = 7f;
+        spawnRate = 3f;
         enemiesOnField = 0;
         enemyLimit = Random.Range(7,12);
         for (int i = 0; i <= 2; i++)
@@ -48,7 +49,7 @@ public class gameManagerScript : MonoBehaviour
                 enemyLimit = Random.Range(7, 12);
                 for (int i = 0; i < enemyLimit; i++)
                 {
-                    enemySpawning(Random.Range(0,2), Random.Range(5, 10), Random.Range(-3, 4));
+                    enemySpawning();
                 }
                 spawnTimer = 0f;
             }
@@ -60,36 +61,38 @@ public class gameManagerScript : MonoBehaviour
 
     }
 
-    public void enemySpawning(int area, int x, int y)
+    public void enemySpawning()
     {
-        if (area == 0)
-        {
-            Instantiate(enemy, new Vector3(x, y, 0), Quaternion.identity);
-            enemiesOnField += 1;
-        } else if (area >= 1)
-        {
-            Instantiate(enemy, new Vector3(-x, y, 0), Quaternion.identity);
-            enemiesOnField += 1;
-        }
+        if (portalPositions.Count == 0) return;
+
+        Transform portalPos = portalPositions[Random.Range(0, portalPositions.Count)];
+        Instantiate(enemy, portalPos.position, Quaternion.identity);
+        enemiesOnField += 1;
     }
+
 
     public void portalMaking()
     {
-        //Random.Range(6, 9), Random.Range(-4, 5)
+        GameObject p = null;
+
         if (area == 0)
         {
-            Instantiate(portal, new Vector3(Random.Range(20, 44), Random.Range(-1, -5), 0), Quaternion.identity);
-            area += 1;
+            p = Instantiate(portal, new Vector3(Random.Range(20, 44), Random.Range(-1, -5), 0), Quaternion.identity);
         }
         else if (area == 1)
         {
-            Instantiate(portal, new Vector3(Random.Range(-20, -44), Random.Range(-1, -5), 0), Quaternion.identity);
-            area += 1;
+            p = Instantiate(portal, new Vector3(Random.Range(-44, -20), Random.Range(-1, -5), 0), Quaternion.identity);
         }
         else if (area == 2)
         {
-            Instantiate(portal, new Vector3(Random.Range(-43, 44), Random.Range(-4, -9), 0), Quaternion.identity);
+            p = Instantiate(portal, new Vector3(Random.Range(-43, 44), Random.Range(-9, -4), 0), Quaternion.identity);
+        }
+
+        if (p != null)
+        {
+            portalPositions.Add(p.transform);
             area += 1;
         }
     }
+
 }

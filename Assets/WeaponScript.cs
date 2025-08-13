@@ -53,7 +53,7 @@ public class WeaponScript : MonoBehaviour
 
         Vector2 direction = (mouseWorldPosition - player.transform.position).normalized;
 
-        float radius = 1.3f;
+        float radius = 1f;
         transform.position = player.transform.position + (Vector3)direction * radius;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

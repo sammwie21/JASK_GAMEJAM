@@ -29,6 +29,8 @@ public class PlayerScript : MonoBehaviour
     public int level;
 
     public string weapon;
+
+    public int health;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         weapon = "gun";
         ws = GameObject.Find("Weapon");
         firePoint = ws.transform;
+        health = 10000000;
     }
 
     // Update is called once per frame
@@ -94,9 +97,15 @@ public class PlayerScript : MonoBehaviour
         {
             Shoot(aimDirection);
             ammo--;
+
         }
 
-        if(level == 1 && xp == 15)
+        if (Input.GetMouseButtonDown(0) && weapon == "sword")
+        {
+            ws.GetComponent<SwordScript>().Swing();
+        }
+
+        if (level == 1 && xp == 15)
         {
             maxAmmo = 75;
             ammo = 25;
@@ -115,10 +124,19 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha1))
         {
             weapon = "gun";
+            ws.GetComponent<PolygonCollider2D>().enabled = false;
         }
+
         if (Input.GetKey(KeyCode.Alpha2))
         {
             weapon = "sword";
+            ws.GetComponent<PolygonCollider2D>().enabled = true;
+        }
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            //END SCREEN
         }
     }
 

@@ -76,7 +76,7 @@ public class PetScript : MonoBehaviour
 
             if (damageTimers[enemy] <= 0f)
             {
-                enemy.GetComponent<Zombie1Script>().health--;
+                enemy.GetComponent<enemyScript>().health--;
                 damageTimers[enemy] = inter;
 
             }

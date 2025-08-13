@@ -6,7 +6,7 @@ public class enemyScript : MonoBehaviour
 {
     public float testTimer = 0f;
     private GameObject target;
-    public float speed = 2f;
+    public float speed = 3f;
     public int health;
     public GameObject gameManagerObject;
     public GameObject ammo;
@@ -19,8 +19,8 @@ public class enemyScript : MonoBehaviour
     void Start()
     {
         gameManagerObject = GameObject.Find("gameManager");
-        target = GameObject.FindGameObjectWithTag("Player");
-        health = 1;
+        target = GameObject.FindGameObjectWithTag("Player"); 
+        health = 6;
     }
 
     // Update is called once per frame
@@ -92,6 +92,11 @@ public class enemyScript : MonoBehaviour
                 health -= 3;
             }
             Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "Player")
+        {
+            target.GetComponent<PlayerScript>().health--;
         }
     }
 }
