@@ -17,6 +17,7 @@ public class PetScript : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+        Physics2D.IgnoreCollision(target.GetComponent<PolygonCollider2D>(), gameObject.GetComponent<PolygonCollider2D>(), true);
     }
 
     void Update()

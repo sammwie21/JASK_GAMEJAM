@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class gameManagerScript : MonoBehaviour
 {
+    public GameObject player;
     public GameObject enemy;
     public GameObject portal;
     public int enemyLimit;
@@ -14,6 +15,8 @@ public class gameManagerScript : MonoBehaviour
     public float spawnRate;
     public float gameTimer = 45f;
     public TextMeshProUGUI Timer;
+    public TextMeshProUGUI Ammo;
+    public TextMeshProUGUI exp;
     public int area = 0;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,7 @@ public class gameManagerScript : MonoBehaviour
         spawnRate = 7f;
         enemiesOnField = 0;
         enemyLimit = Random.Range(7,12);
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i <= 2; i++)
         {
             portalMaking();
         }
@@ -34,7 +37,9 @@ public class gameManagerScript : MonoBehaviour
     {
         gameTimer -= Time.deltaTime;
         Timer.text = gameTimer.ToString("0.00") + " seconds left.";
-        if(gameTimer >= 0)
+        Ammo.text = player.GetComponent<PlayerScript>().ammo + "/" + player.GetComponent<PlayerScript>().maxAmmo;
+        exp.text = player.GetComponent<PlayerScript>().xp + " xp points";
+        if (gameTimer >= 0)
         {
             spawnTimer += Time.deltaTime;
 
@@ -73,17 +78,17 @@ public class gameManagerScript : MonoBehaviour
         //Random.Range(6, 9), Random.Range(-4, 5)
         if (area == 0)
         {
-            Instantiate(portal, new Vector3(Random.Range(6, 9), Random.Range(-4, 5), 0), Quaternion.identity);
+            Instantiate(portal, new Vector3(Random.Range(20, 44), Random.Range(-1, -5), 0), Quaternion.identity);
             area += 1;
         }
         else if (area == 1)
         {
-            Instantiate(portal, new Vector3(Random.Range(-6, -9), Random.Range(-4, 5), 0), Quaternion.identity);
+            Instantiate(portal, new Vector3(Random.Range(-20, -44), Random.Range(-1, -5), 0), Quaternion.identity);
             area += 1;
         }
         else if (area == 2)
         {
-            Instantiate(portal, new Vector3(Random.Range(-1, 2), Random.Range(-5, 6), 0), Quaternion.identity);
+            Instantiate(portal, new Vector3(Random.Range(-43, 44), Random.Range(-4, -9), 0), Quaternion.identity);
             area += 1;
         }
     }

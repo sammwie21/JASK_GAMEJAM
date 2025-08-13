@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour
     private Vector3 up;
     private Vector3 left;
 
+    public GameObject gameManagerObject;
     public GameObject bulletPrefab;
     private GameObject ws;
     private Transform firePoint;
@@ -21,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer s;
 
     public int ammo;
+    public int maxAmmo;
 
     public int xp = 0;
 
@@ -34,6 +36,7 @@ public class PlayerScript : MonoBehaviour
         up = new Vector3(0, 0.05f, 0);
         left = new Vector3(0.05f, 0f, 0);
         ammo = 15;
+        maxAmmo = 45;
         level = 1;
         weapon = "gun";
         ws = GameObject.Find("Weapon");
@@ -61,7 +64,27 @@ public class PlayerScript : MonoBehaviour
         {
             transform.position += left;
         }
-
+        if(ammo == 0 && maxAmmo > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (level == 1)
+                {
+                    maxAmmo -= 15;
+                    ammo += 15;
+                }
+                else if (level == 2)
+                {
+                    maxAmmo -= 25;
+                    ammo += 25;
+                }
+                else if (level == 3)
+                {
+                    maxAmmo -= 30;
+                    ammo += 30;
+                }
+            }
+        }
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f; 
 
@@ -75,6 +98,7 @@ public class PlayerScript : MonoBehaviour
 
         if(level == 1 && xp == 15)
         {
+            maxAmmo = 75;
             ammo = 25;
             level = 2;
             xp = 0;
@@ -82,6 +106,7 @@ public class PlayerScript : MonoBehaviour
 
         if (level == 2 && xp == 30)
         {
+            maxAmmo = 90;
             ammo = 30;
             level = 3;
             xp = 0;
@@ -113,21 +138,37 @@ public class PlayerScript : MonoBehaviour
         if(collision.gameObject.tag == "Powerup" && level == 1)
         {
             ammo = 15;
+            maxAmmo = 45;
         }
 
         if (collision.gameObject.tag == "Powerup" && level == 2)
         {
             ammo = 25;
+            maxAmmo = 75;
         }
 
         if (collision.gameObject.tag == "Powerup" && level == 3)
         {
             ammo = 30;
+            maxAmmo = 90;
         }
 
         if (collision.gameObject.tag == "XP")
         {
             xp++;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "ammo")
+        {
+            maxAmmo += maxAmmo / 3;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Time")
+        {
+            gameManagerObject.GetComponent<gameManagerScript>().gameTimer += 15f;
+            Destroy(collision.gameObject);
         }
     }
 }

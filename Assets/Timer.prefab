@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2747099851202535855
+--- !u!1 &9210026290342958285
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6216553367849455324}
-  - component: {fileID: 3057435738925405344}
-  - component: {fileID: 1044718333866762787}
+  - component: {fileID: 1484818024170327710}
+  - component: {fileID: 4421998434372137919}
+  - component: {fileID: 2766614584082711468}
+  - component: {fileID: 4737332751644229967}
   m_Layer: 0
-  m_Name: Portal
-  m_TagString: Untagged
+  m_Name: Timer
+  m_TagString: Time
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6216553367849455324
+--- !u!4 &1484818024170327710
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2747099851202535855}
+  m_GameObject: {fileID: 9210026290342958285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3057435738925405344
+--- !u!212 &4421998434372137919
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2747099851202535855}
+  m_GameObject: {fileID: 9210026290342958285}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5ca35aa98a65d744d9b1188f34abda3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 288e843c8ca5dcd469ee429a8b9e33b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,16 +86,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1044718333866762787
-MonoBehaviour:
+--- !u!50 &2766614584082711468
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2747099851202535855}
+  m_GameObject: {fileID: 9210026290342958285}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!60 &4737332751644229967
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9210026290342958285}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e72c8e93a5daf42b4bb1d1d2421077, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testTimer: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
+    newSize: {x: 1.6, y: 1.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.42, y: -0.01}
+      - {x: 0.39, y: 0.06}
+      - {x: 0.34, y: 0.12}
+      - {x: 0.16, y: 0.22}
+      - {x: -0.099999994, y: 0.22}
+      - {x: -0.21, y: 0.17}
+      - {x: -0.32, y: 0.08}
+      - {x: -0.37, y: -0.049999997}
+      - {x: -0.37, y: -0.34}
+      - {x: -0.34, y: -0.41}
+      - {x: -0.29, y: -0.47}
+      - {x: -0.21, y: -0.52}
+      - {x: -0.099999994, y: -0.57}
+      - {x: 0.19, y: -0.57}
+      - {x: 0.26, y: -0.53999996}
+      - {x: 0.32, y: -0.48999998}
+      - {x: 0.42, y: -0.31}

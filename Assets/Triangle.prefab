@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1191750666531347003}
   - component: {fileID: 3458501221754027251}
-  - component: {fileID: -2855163723577356178}
   - component: {fileID: 2700098423106351442}
+  - component: {fileID: 2093944009895675480}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Pet
@@ -86,8 +86,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &-2855163723577356178
-BoxCollider2D:
+--- !u!114 &2700098423106351442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526189094637012754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b8a057ccf44e64680a8e7aad30be42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  offset: {x: 1, y: 0, z: 0}
+  DetectionRadius: 7
+--- !u!60 &2093944009895675480
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,21 +124,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &2700098423106351442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526189094637012754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22b8a057ccf44e64680a8e7aad30be42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  offset: {x: 1, y: 0, z: 0}
-  DetectionRadius: 7
+  m_Points:
+    m_Paths:
+    - - {x: -0.14, y: 0.21}
+      - {x: -0.28, y: -0.04}
+      - {x: -0.28, y: -0.07}
+      - {x: -0.26, y: -0.08}
+      - {x: 0.099999994, y: -0.08}
+      - {x: 0.12, y: -0.06}
+      - {x: 0.12, y: -0.049999997}
+      - {x: -0.089999996, y: 0.21}
