@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     public int xp = 0;
 
     public int level;
+    public int ammoLvlMax;
 
     public string weapon;
 
@@ -39,6 +40,7 @@ public class PlayerScript : MonoBehaviour
         left = new Vector3(0.05f, 0f, 0);
         ammo = 15;
         maxAmmo = 45;
+        ammoLvlMax = 45;
         level = 1;
         weapon = "gun";
         ws = GameObject.Find("Weapon");
@@ -107,6 +109,7 @@ public class PlayerScript : MonoBehaviour
 
         if (level == 1 && xp == 15)
         {
+            ammoLvlMax = 75;
             maxAmmo = 75;
             ammo = 25;
             level = 2;
@@ -115,6 +118,7 @@ public class PlayerScript : MonoBehaviour
 
         if (level == 2 && xp == 30)
         {
+            ammoLvlMax = 90;
             maxAmmo = 90;
             ammo = 30;
             level = 3;
@@ -153,7 +157,7 @@ public class PlayerScript : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Powerup" && level == 1)
+        /*if(collision.gameObject.tag == "Powerup" && level == 1)
         {
             ammo = 15;
             maxAmmo = 45;
@@ -169,7 +173,7 @@ public class PlayerScript : MonoBehaviour
         {
             ammo = 30;
             maxAmmo = 90;
-        }
+        }*/
 
         if (collision.gameObject.tag == "XP")
         {
@@ -179,13 +183,13 @@ public class PlayerScript : MonoBehaviour
 
         if (collision.gameObject.tag == "ammo")
         {
-            maxAmmo += maxAmmo / 3;
+            maxAmmo = ammoLvlMax;
             Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "Time")
         {
-            gameManagerObject.GetComponent<gameManagerScript>().gameTimer += 15f;
+            gameManagerObject.GetComponent<gameManagerScript>().gameTimer += 2.5f;
             Destroy(collision.gameObject);
         }
     }

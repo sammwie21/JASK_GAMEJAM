@@ -23,7 +23,11 @@ public class gameManagerScript : MonoBehaviour
     void Start()
     {
         spawnTimer = 0f;
+<<<<<<< Updated upstream
         spawnRate = 3f;
+=======
+        spawnRate = 4.5f;
+>>>>>>> Stashed changes
         enemiesOnField = 0;
         enemyLimit = Random.Range(7,12);
         for (int i = 0; i <= 2; i++)
