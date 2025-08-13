@@ -29,8 +29,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         s = GetComponent<SpriteRenderer>();
-        up = new Vector3(0, 0.05f, 0);
-        left = new Vector3(0.05f, 0f, 0);
+        up = new Vector3(0, 0.075f, 0);
+        left = new Vector3(0.075f, 0f, 0);
         ammo = 15;
         maxAmmo = 45;
         level = 1;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3458501221754027251}
   - component: {fileID: 2700098423106351442}
   - component: {fileID: 2093944009895675480}
+  - component: {fileID: -9120570653826212316}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 51c0c0b95d2edcf4d8ea616a680c7423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,6 +102,7 @@ MonoBehaviour:
   speed: 5
   offset: {x: 1, y: 0, z: 0}
   DetectionRadius: 7
+  inter: 0.3
 --- !u!60 &2093944009895675480
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +136,24 @@ PolygonCollider2D:
       - {x: 0.12, y: -0.06}
       - {x: 0.12, y: -0.049999997}
       - {x: -0.089999996, y: 0.21}
+--- !u!50 &-9120570653826212316
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526189094637012754}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

@@ -8,7 +8,12 @@ public class gameManagerScript : MonoBehaviour
 {
     public GameObject player;
     public GameObject enemy;
-    public GameObject portal;
+    public GameObject portal1;
+    public GameObject portal2;
+    public GameObject portal3;
+    public GameObject void1;
+    public GameObject void2;
+    public GameObject void3;
     public int enemyLimit;
     public int enemiesOnField;
     public float spawnTimer;
@@ -78,17 +83,17 @@ public class gameManagerScript : MonoBehaviour
         //Random.Range(6, 9), Random.Range(-4, 5)
         if (area == 0)
         {
-            Instantiate(portal, new Vector3(Random.Range(20, 44), Random.Range(-1, -5), 0), Quaternion.identity);
+            Instantiate(portal1, new Vector3(Random.Range(20, 44), Random.Range(-1, -5), 0), Quaternion.identity);
             area += 1;
         }
         else if (area == 1)
         {
-            Instantiate(portal, new Vector3(Random.Range(-20, -44), Random.Range(-1, -5), 0), Quaternion.identity);
+            Instantiate(portal2, new Vector3(Random.Range(-20, -44), Random.Range(-1, -5), 0), Quaternion.identity);
             area += 1;
         }
         else if (area == 2)
         {
-            Instantiate(portal, new Vector3(Random.Range(-43, 44), Random.Range(-4, -9), 0), Quaternion.identity);
+            Instantiate(portal3, new Vector3(Random.Range(-43, 44), Random.Range(-4, -9), 0), Quaternion.identity);
             area += 1;
         }
     }

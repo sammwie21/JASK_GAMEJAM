@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Time
+  - XP
+  - ammo
+  - Projectile
+  - Portal
   layers:
   - Default
   - TransparentFX

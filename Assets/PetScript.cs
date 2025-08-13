@@ -11,6 +11,9 @@ public class PetScript : MonoBehaviour
     private GameObject target;
     private GameObject currentEnemy;
 
+    public float inter = 0.3f;
+    private Dictionary<GameObject, float> damageTimers = new Dictionary<GameObject, float>();
+
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
@@ -59,11 +62,34 @@ public class PetScript : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            GameObject enemy = collision.gameObject;
+            if (!damageTimers.ContainsKey(enemy))
+            {
+                damageTimers[enemy] = 0f;
+            }
+
+            damageTimers[enemy] -= Time.deltaTime;
+
+            if (damageTimers[enemy] <= 0f)
+            {
+                enemy.GetComponent<enemyScript>().health--;
+                damageTimers[enemy] = inter;
+
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            damageTimers.Remove(collision.gameObject);
+
         }
     }
 }
+

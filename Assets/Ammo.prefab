@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6919742762572743095}
   - component: {fileID: 3560669033614372841}
-  - component: {fileID: -8794974618159587998}
-  - component: {fileID: 8600990268030372052}
+  - component: {fileID: -5143785557790662932}
   m_Layer: 0
   m_Name: Ammo
   m_TagString: ammo
@@ -86,28 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &-8794974618159587998
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3047247656109698383}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!60 &8600990268030372052
+--- !u!60 &-5143785557790662932
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
