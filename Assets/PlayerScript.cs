@@ -9,13 +9,15 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject gameManagerObject;
     public GameObject bulletPrefab;
-    public Transform firePoint;
+    private GameObject ws;
+    private Transform firePoint;
     public float bulletSpeed = 5f;
 
     public float bulletTimer;
 
     public Sprite one;
     public Sprite two;
+
 
     private SpriteRenderer s;
 
@@ -25,6 +27,8 @@ public class PlayerScript : MonoBehaviour
     public int xp = 0;
 
     public int level;
+
+    public string weapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,9 @@ public class PlayerScript : MonoBehaviour
         ammo = 15;
         maxAmmo = 45;
         level = 1;
+        weapon = "gun";
+        ws = GameObject.Find("Weapon");
+        firePoint = ws.transform;
     }
 
     // Update is called once per frame
@@ -83,7 +90,7 @@ public class PlayerScript : MonoBehaviour
 
         Vector2 aimDirection = (mouseWorldPos - firePoint.position).normalized;
 
-        if (Input.GetMouseButtonDown(0) && ammo > 0)
+        if (Input.GetMouseButtonDown(0) && ammo > 0 && weapon == "gun")
         {
             Shoot(aimDirection);
             ammo--;
@@ -107,17 +114,18 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Alpha1))
         {
-
+            weapon = "gun";
         }
         if (Input.GetKey(KeyCode.Alpha2))
         {
-
+            weapon = "sword";
         }
     }
 
     void Shoot(Vector2 direction)
-    {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+    { 
+        firePoint.position = ws.transform.position;
+        GameObject bullet = Instantiate(bulletPrefab, ws.transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
