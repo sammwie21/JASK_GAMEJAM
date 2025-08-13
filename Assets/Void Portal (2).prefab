@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e72c8e93a5daf42b4bb1d1d2421077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portalDestination: {fileID: 6168231913621815649, guid: c794eb84a6ebc7143b8e46a25160e4b8, type: 3}
+  destination: {fileID: 6168231913621815649, guid: 75ff7d9312e15a14f9f4ea5ac89f5ed5, type: 3}
 --- !u!60 &-2789986082244646401
 PolygonCollider2D:
   m_ObjectHideFlags: 0

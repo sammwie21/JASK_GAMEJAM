@@ -11,6 +11,7 @@ public class enemyScript : MonoBehaviour
     public GameObject gameManagerObject;
     public GameObject ammo;
     public GameObject extarTime;
+    public GameObject healthPack;
     public GameObject exp1;
     public GameObject exp2;
     public GameObject exp3;
@@ -19,8 +20,8 @@ public class enemyScript : MonoBehaviour
     void Start()
     {
         gameManagerObject = GameObject.Find("gameManager");
-        target = GameObject.FindGameObjectWithTag("Player");
-        health = 1;
+        target = GameObject.FindGameObjectWithTag("Player"); 
+        health = 3;
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class enemyScript : MonoBehaviour
         if(health < 1)
         {
             Destroy(gameObject);
-            itemDrops(Random.Range(0, 6), Random.Range(1, 3));
+            itemDrops(Random.Range(0, 8), Random.Range(1, 9));
             xp(Random.Range(0, 5));
         }
 
@@ -43,7 +44,7 @@ public class enemyScript : MonoBehaviour
 
     public void itemDrops(int chance, int item)
     {
-        if(chance >= 3)
+        if(chance >= 5)
         {
             if(item == 1)
             {
@@ -51,6 +52,10 @@ public class enemyScript : MonoBehaviour
             } else if (item == 2)
             {
                 Instantiate(extarTime, transform.position, Quaternion.identity);
+            }
+            else if (item == 3)
+            {
+                Instantiate(healthPack, transform.position, Quaternion.identity);
             }
         }
     }
@@ -61,18 +66,6 @@ public class enemyScript : MonoBehaviour
         {
             Instantiate(exp1, transform.position, Quaternion.identity);
         } 
-        else if (xp == 2)
-        {
-            Instantiate(exp2, transform.position, Quaternion.identity);
-        }
-        else if (xp == 3)
-        {
-            Instantiate(exp3, transform.position, Quaternion.identity);
-        }
-        else if (xp == 4)
-        {
-            Instantiate(exp4, transform.position, Quaternion.identity);
-        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -92,6 +85,11 @@ public class enemyScript : MonoBehaviour
                 health -= 3;
             }
             Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "Player")
+        {
+            target.GetComponent<PlayerScript>().health--;
         }
     }
 }

@@ -7,6 +7,7 @@ public class BulletScript : MonoBehaviour
     public float timer;
     private GameObject player;
     private GameObject pet;
+    private GameObject enemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,9 @@ public class BulletScript : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject); 
+        }
     }
 }

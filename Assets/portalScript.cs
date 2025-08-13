@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class portalScript : MonoBehaviour
 {
-    [SerializeField] private Transform portalDestination;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    [SerializeField] private Transform destination;
 
     public Transform PortalDestination()
     {
-        return portalDestination;
+        return destination;
     }
 }

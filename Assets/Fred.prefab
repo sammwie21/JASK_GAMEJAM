@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d09fe730273bec147832691cc3cb1b3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,11 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testTimer: 0
-  speed: 1
+  speed: 3
   health: 0
   gameManagerObject: {fileID: 0}
   ammo: {fileID: 3047247656109698383, guid: fde3e4e06bb657443a7aab60c12fcc80, type: 3}
   extarTime: {fileID: 9210026290342958285, guid: 2ebad87480eb9144b9b75e7edf2e3e68, type: 3}
+  healthPack: {fileID: 4326359977304091006, guid: fe10a73b8819efa4998285477a7aafd0, type: 3}
   exp1: {fileID: 3423971279879721650, guid: 65c9ce9509db5da498685d26eca74228, type: 3}
   exp2: {fileID: 7644322908325968282, guid: 87b91fa50f41872458911e53b2990576, type: 3}
   exp3: {fileID: 4129001083512403929, guid: ee016c3623ce0894e8ed0a40280a71b0, type: 3}
@@ -116,7 +117,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3205369310920685733}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -166,7 +167,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3205369310920685733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

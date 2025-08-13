@@ -10,6 +10,8 @@ TagManager:
   - ammo
   - Projectile
   - Portal
+  - Pet
+  - Medkit
   layers:
   - Default
   - TransparentFX
