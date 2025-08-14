@@ -21,8 +21,9 @@ public class enemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManagerObject = GameObject.Find("gameManager");
+        gameManagerObject = GameObject.Find("GameManager");
         target = GameObject.FindGameObjectWithTag("Player"); 
+
         //health = 3;
     }
 
@@ -35,15 +36,24 @@ public class enemyScript : MonoBehaviour
         }
         runTimer += Time.deltaTime;
 
-        if(health < 1)
+        if (health < 1)
         {
             Destroy(gameObject);
             itemDrops(Random.Range(0, 8), Random.Range(1, 4));
             xp(Random.Range(0, 5));
-        } else if (runTimer >= despawnTime)
+            if (gameObject.tag == "Boss")
+            {
+                target.GetComponent<PlayerScript>().xp += 15;
+            }
+        }
+        else if (runTimer >= despawnTime)
         {
             Destroy(gameObject);
             runTimer = 0;
+        }
+        else if (gameManagerObject.GetComponent<gameManagerScript>().gameTimer <= 0)
+        {
+            Destroy(gameObject);
         }
 
     }
@@ -71,7 +81,18 @@ public class enemyScript : MonoBehaviour
         if (xp == 1)
         {
             Instantiate(exp1, transform.position, Quaternion.identity);
-        } 
+        } else if (xp == 2)
+        {
+            Instantiate(exp2, transform.position, Quaternion.identity);
+        }
+        else if (xp == 3)
+        {
+            Instantiate(exp2, transform.position, Quaternion.identity);
+        }
+        else if (xp == 4)
+        {
+            Instantiate(exp2, transform.position, Quaternion.identity);
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

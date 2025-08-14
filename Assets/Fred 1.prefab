@@ -101,9 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runTimer: 0
   despawnTime: 14
-  speed: 4.5
-  health: 5
-  enemyDmg: 4
+  speed: 3.25
+  health: 7
+  enemyDmg: 3
   gameManagerObject: {fileID: 0}
   ammo: {fileID: 3047247656109698383, guid: fde3e4e06bb657443a7aab60c12fcc80, type: 3}
   extarTime: {fileID: 9210026290342958285, guid: 2ebad87480eb9144b9b75e7edf2e3e68, type: 3}

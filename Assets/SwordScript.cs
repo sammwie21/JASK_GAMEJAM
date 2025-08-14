@@ -49,6 +49,11 @@ public class SwordScript : MonoBehaviour
         {
             collision.gameObject.GetComponent<enemyScript>().health -= 2;
         }
+
+        if (collision.gameObject.tag == "Boss")
+        {
+            collision.gameObject.GetComponent<enemyScript>().health -= 2;
+        }
     }
 }
 

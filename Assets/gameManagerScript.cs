@@ -24,11 +24,13 @@ public class gameManagerScript : MonoBehaviour
     public TextMeshProUGUI exp;
     public TextMeshProUGUI Health;
     public int area = 0;
+    public bool foundDaughter;
     private List<Transform> portalPositions = new List<Transform>();
     public bool bossSpawned;
     // Start is called before the first frame update
     void Start()
     {
+        foundDaughter = false;
         spawnTimer = 0f;
         spawnRate = 4.5f;
         enemiesOnField = 0;
@@ -48,6 +50,11 @@ public class gameManagerScript : MonoBehaviour
         Ammo.text = player.GetComponent<PlayerScript>().ammo + "/" + player.GetComponent<PlayerScript>().maxAmmo;
         exp.text = player.GetComponent<PlayerScript>().xp + " xp points";
         Health.text = "HP: " + player.GetComponent<PlayerScript>().health;
+        if (foundDaughter == true)
+        {
+            gameTimer = 0;
+            Debug.Log("You Win");
+        }
 
         if (gameTimer >= 0)
         {
@@ -61,11 +68,11 @@ public class gameManagerScript : MonoBehaviour
                 }
                 spawnTimer = 0f;
             }
-        } else if (gameTimer < 0 || player.GetComponent<PlayerScript>().health == 0)
+        } else if (gameTimer < 0 || player.GetComponent<PlayerScript>().health == 0 && foundDaughter == false)
         {
             gameTimer = 0;
             Debug.Log("Game over, you lose");
-        }
+        } 
 
     }
 
@@ -80,10 +87,11 @@ public class gameManagerScript : MonoBehaviour
             bossSpawned = false;
         } else if (player.GetComponent<Transform>().position.y < 73f && player.GetComponent<Transform>().position.y > 48f)
         {
-            Instantiate(enemy2, new Vector3(Random.Range(-100, -21), Random.Range(40, 56), 0), Quaternion.identity);
-            enemiesOnField += 1;
             if (bossSpawned == false)
             {
+                Instantiate(enemy2, new Vector3(Random.Range(-100, -21), Random.Range(40, 56), 0), Quaternion.identity);
+            enemiesOnField += 1;
+            
                 Instantiate(enemy3, new Vector3(Random.Range(-100, -21), Random.Range(40, 56), 0), Quaternion.identity);
                 bossSpawned = true;
                 enemiesOnField += 1;
@@ -91,10 +99,11 @@ public class gameManagerScript : MonoBehaviour
         }
         else if (player.GetComponent<Transform>().position.y < -86f && player.GetComponent<Transform>().position.y > -107f)
         {
-            Instantiate(enemy2, new Vector3(Random.Range(30, 121), Random.Range(-80, -96), 0), Quaternion.identity);
-            enemiesOnField += 1;
             if (bossSpawned == false)
             {
+                Instantiate(enemy2, new Vector3(Random.Range(30, 121), Random.Range(-80, -96), 0), Quaternion.identity);
+            enemiesOnField += 1;
+            
                 Instantiate(enemy3, new Vector3(Random.Range(30, 121), Random.Range(-80, -96), 0), Quaternion.identity);
                 bossSpawned = true;
                 enemiesOnField += 1;
@@ -102,10 +111,11 @@ public class gameManagerScript : MonoBehaviour
         }
         else if (player.GetComponent<Transform>().position.y <-65f && player.GetComponent<Transform>().position.y > -85f)
         {
-            Instantiate(enemy2, new Vector3(Random.Range(-130, -44), Random.Range(-60, -76), 0), Quaternion.identity);
-            enemiesOnField += 1;
             if (bossSpawned == false)
             {
+                Instantiate(enemy2, new Vector3(Random.Range(-130, -44), Random.Range(-60, -76), 0), Quaternion.identity);
+            enemiesOnField += 1;
+            
                 Instantiate(enemy3, new Vector3(Random.Range(-130, -44), Random.Range(-60, -76), 0), Quaternion.identity);
                 bossSpawned = true;
                 enemiesOnField += 1;

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    private Vector3 up;
-    private Vector3 left;
+    public Vector3 up;
+    public Vector3 right;
 
     public GameObject gameManagerObject;
     public GameObject bulletPrefab;
@@ -32,21 +32,20 @@ public class PlayerScript : MonoBehaviour
     public string weapon;
 
     public int health;
+    private int maxHealth = 25;
     // Start is called before the first frame update
     void Start()
     {
         Physics2D.IgnoreCollision(pet.gameObject.GetComponent<PolygonCollider2D>(), gameObject.GetComponent<PolygonCollider2D>(), true);
         Physics2D.IgnoreCollision(bulletPrefab.gameObject.GetComponent<PolygonCollider2D>(), gameObject.GetComponent<PolygonCollider2D>(), true);
         s = GetComponent<SpriteRenderer>();
-        up = new Vector3(0, 0.05f, 0);
-        left = new Vector3(0.05f, 0f, 0);
         ammo = 15;
         maxAmmo = 45;
         level = 1;
         weapon = "gun";
         ws = GameObject.Find("Weapon");
         firePoint = ws.transform;
-        health = 25;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -54,21 +53,21 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += up;
+            GetComponent<Transform>().position += up;
             s.sprite = one;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= left;
+            GetComponent<Transform>().position -= right;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= up;
+            GetComponent<Transform>().position -= up;
             s.sprite = two;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += left;
+            GetComponent<Transform>().position += right;
         }
         if(ammo == 0 && maxAmmo > 0)
         {
@@ -119,18 +118,22 @@ public class PlayerScript : MonoBehaviour
 
 
 
-        if (level == 1 && xp == 15)
+        if (level == 1 && xp >= 15)
         {
             maxAmmo = 75;
             ammo = 25;
+            maxHealth = 30;
+            health = maxHealth;
             level = 2;
             xp = 0;
         }
 
-        if (level == 2 && xp == 30)
+        if (level == 2 && xp >= 30)
         {
             maxAmmo = 90;
             ammo = 30;
+            maxHealth = 35;
+            health = maxHealth;
             level = 3;
             xp = 0;
         }
@@ -188,16 +191,28 @@ public class PlayerScript : MonoBehaviour
         {
             xp++;
             Destroy(collision.gameObject);
+        } else if (collision.gameObject.tag == "XP2")
+        {
+            xp += 2;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.tag == "XP3")
+        {
+            xp += 3;
+            Destroy(collision.gameObject);
+        } else if (collision.gameObject.tag == "XP4")
+        {
+            xp += 4;
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "Medkit")
         {
-            if(health < 25 && health > 0)
+            if(health < maxHealth && health > 0)
             {
                 health += Random.Range(1,8);
-            } else if (health >= 25)
+            } else if (health >= maxHealth)
             {
-                health = 25;
+                health = maxHealth;
                 xp++;
             }
                 Destroy(collision.gameObject);
@@ -207,6 +222,11 @@ public class PlayerScript : MonoBehaviour
         {
             gameManagerObject.GetComponent<gameManagerScript>().gameTimer += 7f;
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Daughter")
+        {
+            gameManagerObject.GetComponent<gameManagerScript>().foundDaughter = true;
         }
     }
 }

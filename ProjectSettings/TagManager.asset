@@ -12,6 +12,11 @@ TagManager:
   - Portal
   - Pet
   - Medkit
+  - XP2
+  - XP3
+  - XP4
+  - Boss
+  - Daughter
   layers:
   - Default
   - TransparentFX

@@ -729,6 +729,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1191750666531347003, guid: 310cfcf7ce13f964e8eb4cf584207975, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1191750666531347003, guid: 310cfcf7ce13f964e8eb4cf584207975, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1191750666531347003, guid: 310cfcf7ce13f964e8eb4cf584207975, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.05
       objectReference: {fileID: 0}
@@ -769,50 +777,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3458501221754027251, guid: 310cfcf7ce13f964e8eb4cf584207975, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b0b2b8f759d13b499ffa7d08df32bcf, type: 3}
+    - target: {fileID: 3458501221754027251, guid: 310cfcf7ce13f964e8eb4cf584207975, type: 3}
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -2855163723577356178, guid: 310cfcf7ce13f964e8eb4cf584207975, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 310cfcf7ce13f964e8eb4cf584207975, type: 3}
 --- !u!1 &191696662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 526189094637012754, guid: 310cfcf7ce13f964e8eb4cf584207975, type: 3}
   m_PrefabInstance: {fileID: 191696661}
   m_PrefabAsset: {fileID: 0}
---- !u!60 &191696663
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191696662}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.14, y: 0.21}
-      - {x: -0.28, y: -0.04}
-      - {x: -0.28, y: -0.07}
-      - {x: -0.26, y: -0.08}
-      - {x: 0.099999994, y: -0.08}
-      - {x: 0.12, y: -0.06}
-      - {x: 0.12, y: -0.049999997}
-      - {x: -0.089999996, y: 0.21}
 --- !u!50 &191696667
 Rigidbody2D:
   serializedVersion: 4
@@ -833,7 +811,36 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!60 &191696672
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191696662}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.2, y: 0.18}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.099999994, y: 0.089999996}
+      - {x: -0.099999994, y: -0.089999996}
+      - {x: 0.099999994, y: -0.089999996}
+      - {x: 0.099999994, y: 0.089999996}
 --- !u!1 &210802621
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +972,8 @@ MonoBehaviour:
   exp: {fileID: 312669830}
   Health: {fileID: 189639970}
   area: 0
+  foundDaughter: 0
+  bossSpawned: 0
 --- !u!4 &226117920
 Transform:
   m_ObjectHideFlags: 0
@@ -3853,6 +3862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2267ff322b1f80b42a283e619edc86f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  up: {x: 0, y: 0.065, z: 0}
+  right: {x: 0.065, y: 0, z: 0}
   gameManagerObject: {fileID: 226117918}
   bulletPrefab: {fileID: 5152454984403386996, guid: d691f573bd3553e43b0b09b35bfca990, type: 3}
   pet: {fileID: 191696662}

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1191750666531347003}
   - component: {fileID: 3458501221754027251}
   - component: {fileID: 2700098423106351442}
-  - component: {fileID: 2093944009895675480}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Pet
@@ -101,36 +100,4 @@ MonoBehaviour:
   speed: 5
   offset: {x: 1, y: 0, z: 0}
   DetectionRadius: 7
---- !u!60 &2093944009895675480
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526189094637012754}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.14, y: 0.21}
-      - {x: -0.28, y: -0.04}
-      - {x: -0.28, y: -0.07}
-      - {x: -0.26, y: -0.08}
-      - {x: 0.099999994, y: -0.08}
-      - {x: 0.12, y: -0.06}
-      - {x: 0.12, y: -0.049999997}
-      - {x: -0.089999996, y: 0.21}
+  inter: 0.3

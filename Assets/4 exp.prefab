@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5702427382404664196}
   m_Layer: 0
   m_Name: 4 exp
-  m_TagString: XP
+  m_TagString: XP4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
