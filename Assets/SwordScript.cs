@@ -5,14 +5,13 @@ using UnityEngine;
 public class SwordScript : MonoBehaviour
 {
     public float swingDuration = 0.2f;
-    public float swingAngle = 90f;
+    public float swingAngle = 150f;
 
     private bool swinging = false;
     private Quaternion initialRotation;
     private Quaternion targetRotation;
     private float swingTime;
 
-    private List<GameObject> hitEnemies = new List<GameObject>();
 
     void Update()
     {
@@ -26,7 +25,6 @@ public class SwordScript : MonoBehaviour
             if (percent >= 1f)
             {
                 swinging = false;
-                hitEnemies.Clear(); // Allow to hit again next time
                 transform.localRotation = initialRotation;
             }
         }
@@ -43,24 +41,15 @@ public class SwordScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        /*
-        if (swinging && collision.gameObject.tag == "Enemy" && !hitEnemies.Contains(collision.gameObject))
-        {
-            enemyScript enemy = collision.GetComponent<enemyScript>();
-            if (enemy != null)
-            {
-                enemy.GetComponent<enemyScript>().health -= 2;
-                hitEnemies.Add(collision.gameObject);
-            }
-        }
-        */
 
-        if(collision.gameObject.tag == "Enemy")
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Hi");
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<enemyScript>().health -= 2;
         }
     }
 }
+
+

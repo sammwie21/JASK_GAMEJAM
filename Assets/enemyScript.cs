@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class enemyScript : MonoBehaviour
 {
-    public float testTimer = 0f;
+    public float runTimer = 0f;
+    public float despawnTime;
     private GameObject target;
-    public float speed = 2f;
+    public float speed = 4f;
     public int health;
+    public int enemyDmg;
     public GameObject gameManagerObject;
     public GameObject ammo;
     public GameObject extarTime;
@@ -21,7 +23,7 @@ public class enemyScript : MonoBehaviour
     {
         gameManagerObject = GameObject.Find("gameManager");
         target = GameObject.FindGameObjectWithTag("Player"); 
-        health = 3;
+        //health = 3;
     }
 
     // Update is called once per frame
@@ -31,13 +33,17 @@ public class enemyScript : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         }
-        testTimer += Time.deltaTime;
+        runTimer += Time.deltaTime;
 
         if(health < 1)
         {
             Destroy(gameObject);
-            itemDrops(Random.Range(0, 8), Random.Range(1, 9));
+            itemDrops(Random.Range(0, 8), Random.Range(1, 4));
             xp(Random.Range(0, 5));
+        } else if (runTimer >= despawnTime)
+        {
+            Destroy(gameObject);
+            runTimer = 0;
         }
 
     }
@@ -89,7 +95,7 @@ public class enemyScript : MonoBehaviour
 
         if(collision.gameObject.tag == "Player")
         {
-            target.GetComponent<PlayerScript>().health--;
+            target.GetComponent<PlayerScript>().health -= enemyDmg;
         }
     }
 }

@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6168231913621815649}
   - component: {fileID: 4371132929879742382}
+  - component: {fileID: 8980884622191379984}
   - component: {fileID: 6366661193518868589}
   m_Layer: 0
   m_Name: Portal 1
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +86,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &8980884622191379984
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4140019464149403136}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8.8, y: 8.8}
+    newSize: {x: 8.8, y: 8.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.02, y: 2.6499999}
+      - {x: 1.76, y: 2.9299998}
+      - {x: 1.61, y: 3.03}
+      - {x: 1.31, y: 3.22}
+      - {x: 0.53, y: 3.4199998}
+      - {x: -1.02, y: 3.4199998}
+      - {x: -1.04, y: 3.33}
+      - {x: -1.51, y: 3.34}
+      - {x: -1.81, y: 3.24}
+      - {x: -2.01, y: 3.1399999}
+      - {x: -2.33, y: 2.95}
+      - {x: -2.6299999, y: 2.61}
+      - {x: -2.72, y: 2.3999999}
+      - {x: -2.72, y: -2.3999999}
+      - {x: -2.7, y: -2.4199998}
+      - {x: 2.1, y: -2.4199998}
+      - {x: 2.12, y: -2.3999999}
+      - {x: 2.12, y: 2.3999999}
+      - {x: 2.1, y: 2.4199998}
 --- !u!114 &6366661193518868589
 MonoBehaviour:
   m_ObjectHideFlags: 0

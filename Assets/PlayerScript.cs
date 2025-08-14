@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject gameManagerObject;
     public GameObject bulletPrefab;
+    public GameObject pet;
     private GameObject ws;
     private Transform firePoint;
     public float bulletSpeed = 10f;
@@ -34,6 +35,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Physics2D.IgnoreCollision(pet.gameObject.GetComponent<PolygonCollider2D>(), gameObject.GetComponent<PolygonCollider2D>(), true);
+        Physics2D.IgnoreCollision(bulletPrefab.gameObject.GetComponent<PolygonCollider2D>(), gameObject.GetComponent<PolygonCollider2D>(), true);
         s = GetComponent<SpriteRenderer>();
         up = new Vector3(0, 0.05f, 0);
         left = new Vector3(0.05f, 0f, 0);
@@ -105,8 +108,16 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && weapon == "sword")
         {
+            ws.GetComponent<PolygonCollider2D>().enabled = true;
             ws.GetComponent<SwordScript>().Swing();
         }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            ws.GetComponent<PolygonCollider2D>().enabled = false;
+        }
+
+
 
         if (level == 1 && xp == 15)
         {
@@ -133,7 +144,6 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha2))
         {
             weapon = "sword";
-            ws.GetComponent<PolygonCollider2D>().enabled = true;
         }
 
         if (health <= 0)
@@ -184,7 +194,7 @@ public class PlayerScript : MonoBehaviour
         {
             if(health < 25 && health > 0)
             {
-                health += Random.Range(1,6);
+                health += Random.Range(1,8);
             } else if (health >= 25)
             {
                 health = 25;
